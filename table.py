@@ -1,26 +1,30 @@
 import PySimpleGUI as sg
 
-def create_table(contact_information_array, headings):
+def create_table(headings, data):
     print(headings)
-    print(contact_information_array)
-    
-    contact_information_window_layout = [
-        [sg.Table(values=contact_information_array, headings=headings, max_col_width=35,
-                    auto_size_columns=True,
-                    display_row_numbers=True,
-                    justification='right',
-                    num_rows=10,
-                    key='-TABLE-',
-                    row_height=35,
-                    tooltip='Data Table')]
+    print(data)
+
+    grade_information_window_layout = [
+        [sg.Table(
+            values=data,
+            headings=headings,
+            display_row_numbers=True,
+            max_col_width=35,
+            auto_size_columns=True,
+            justification='right',
+            num_rows=10,
+            key='-TABLE-',
+            row_height=35,
+            tooltip="Grades Table"
+        )]
     ]
 
-    contact_information_window = sg.Window("Data Table", contact_information_window_layout, modal=True)
+    grade_information_window = sg.Window("Grades Table", grade_information_window_layout, modal=True)
 
     while True:
-        event, values = contact_information_window.read()
-        if event == "Exit" or event == sg.WIN_CLOSED:
+        event, values = grade_information_window.read()
+        if event == 'Exit' or event == sg.WIN_CLOSED:
             break
-            
-        
-    contact_information_window.close()
+    
+    grade_information_window.close()
+    
